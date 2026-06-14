@@ -1,0 +1,20 @@
+{
+  "name": "每日习惯打卡",
+  "short_name": "每日打卡",
+  "description": "一个可安装到手机主屏幕的每日习惯打卡应用。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "./assets/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
