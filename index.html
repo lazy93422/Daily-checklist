@@ -393,9 +393,228 @@
       gap: 10px;
     }
 
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      background: #fbfcff;
+      padding: 18px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      color: var(--ink);
+      font-size: 28px;
+      font-weight: 950;
+      line-height: 1.2;
+    }
+
+    .stat-note {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .stat-card.highlight {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.10), rgba(16, 185, 129, 0.08));
+      border-color: rgba(37, 99, 235, 0.22);
+    }
+
+    .trend-card {
+      border: 1px solid var(--rule);
+      border-radius: 22px;
+      background: #fbfcff;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .trend-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .trend-title {
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .trend-wrap {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .trend-svg {
+      width: 100%;
+      min-width: 560px;
+      height: auto;
+      display: block;
+    }
+
+    .trend-axis {
+      stroke: var(--rule);
+      stroke-width: 2;
+    }
+
+    .trend-grid-line {
+      stroke: var(--rule);
+      stroke-width: 1;
+      stroke-dasharray: 4 6;
+    }
+
+    .trend-line {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .trend-area {
+      fill: rgba(37, 99, 235, 0.10);
+    }
+
+    .trend-point {
+      fill: var(--accent);
+      stroke: #ffffff;
+      stroke-width: 3;
+    }
+
+    .trend-label {
+      fill: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .trend-value-label {
+      fill: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
     .history-list {
       display: grid;
       gap: 14px;
+    }
+
+    .calendar-section {
+      border: 1px solid var(--rule);
+      border-radius: 22px;
+      background: #fbfcff;
+      padding: 18px;
+    }
+
+    .calendar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .calendar-title {
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .calendar-nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .calendar-weekday {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      padding: 6px 0;
+    }
+
+    .calendar-empty {
+      min-height: 54px;
+    }
+
+    .calendar-day {
+      min-height: 62px;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      background: #ffffff;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 8px;
+      cursor: default;
+      font-weight: 900;
+      text-align: left;
+    }
+
+    .calendar-day.has-record {
+      color: var(--ink);
+      cursor: pointer;
+      border-color: rgba(37, 99, 235, 0.28);
+      background: rgba(37, 99, 235, 0.06);
+    }
+
+    .calendar-day.has-record:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .calendar-day.selected {
+      color: #ffffff;
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+    }
+
+    .day-score {
+      color: var(--accent2);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .calendar-day.selected .day-score {
+      color: #ffffff;
+    }
+
+    .day-detail {
+      margin-top: 18px;
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+    }
+
+    .day-detail-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
     .history-card {
@@ -499,6 +718,36 @@
         grid-template-columns: 1fr;
       }
 
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-grid {
+        gap: 6px;
+      }
+
+      .calendar-day {
+        min-height: 52px;
+        border-radius: 12px;
+        padding: 6px;
+        font-size: 13px;
+      }
+
+      .calendar-head,
+      .trend-head,
+      .day-detail-title {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .calendar-nav {
+        width: 100%;
+      }
+
+      .calendar-nav .small-button {
+        flex: 1;
+      }
+
       .manage-item {
         grid-template-columns: 1fr;
       }
@@ -523,7 +772,7 @@
       <main>
         <nav class="tabs" aria-label="页面选项卡">
           <button class="tab-button active" type="button" data-tab="todayPanel">今日打卡</button>
-          <button class="tab-button" type="button" data-tab="overviewPanel">总览</button>
+          <button class="tab-button" type="button" data-tab="overviewPanel">统计</button>
         </nav>
 
         <section class="panel active" id="todayPanel">
@@ -562,6 +811,8 @@
               <button class="primary-button" type="button" id="exportExcel">导出 Excel</button>
             </div>
           </div>
+          <section class="stats-grid" id="overviewStats" aria-label="打卡统计"></section>
+          <section class="trend-card" id="trendChart" aria-label="打卡趋势图"></section>
           <div class="history-list" id="historyList"></div>
         </section>
       </main>
@@ -586,6 +837,10 @@
       var summaryText = document.getElementById("summaryText");
       var historyList = document.getElementById("historyList");
       var overviewCount = document.getElementById("overviewCount");
+      var overviewStats = document.getElementById("overviewStats");
+      var trendChart = document.getElementById("trendChart");
+      var selectedOverviewDate = "";
+      var overviewMonthDate = null;
 
       function pad(value) {
         return String(value).padStart(2, "0");
@@ -603,6 +858,11 @@
       function formatDateKey(targetDateKey) {
         var parts = targetDateKey.split("-");
         return parts[0] + "年" + parts[1] + "月" + parts[2] + "日";
+      }
+
+      function parseDateKey(targetDateKey) {
+        var parts = targetDateKey.split("-").map(Number);
+        return new Date(parts[0], parts[1] - 1, parts[2]);
       }
 
       function storageKey(key) {
@@ -816,43 +1076,262 @@
         renderAll();
       }
 
+      function getCheckedCountByDate(targetDateKey) {
+        return items.reduce(function (sum, item) {
+          return sum + (localStorage.getItem(storageKeyByDate(targetDateKey, item.key)) === "true" ? 1 : 0);
+        }, 0);
+      }
+
+      function renderSelectedDayDetail(targetDateKey) {
+        var checkedCount = getCheckedCountByDate(targetDateKey);
+        var itemHtml = items.map(function (item) {
+          var checked = localStorage.getItem(storageKeyByDate(targetDateKey, item.key)) === "true";
+          return '<div class="history-item ' + (checked ? "done" : "") + '">' +
+            '<span>' + escapeHtml(item.label) + '</span>' +
+            '<strong>' + (checked ? "已勾选" : "未勾选") + '</strong>' +
+            '</div>';
+        }).join("");
+
+        return '<section class="day-detail">' +
+          '<div class="day-detail-title">' +
+            '<div class="history-date">' + escapeHtml(formatDateKey(targetDateKey)) + '</div>' +
+            '<div class="history-score">已勾选 ' + checkedCount + ' / ' + items.length + ' 项</div>' +
+          '</div>' +
+          '<div class="history-items">' + itemHtml + '</div>' +
+        '</section>';
+      }
+
+      function renderCalendar(dates) {
+        if (!selectedOverviewDate || dates.indexOf(selectedOverviewDate) === -1) {
+          selectedOverviewDate = dates[0];
+        }
+
+        if (!overviewMonthDate) {
+          overviewMonthDate = parseDateKey(selectedOverviewDate);
+        }
+
+        var year = overviewMonthDate.getFullYear();
+        var month = overviewMonthDate.getMonth();
+        var firstDay = new Date(year, month, 1).getDay();
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+        var weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+        var dateSet = {};
+        dates.forEach(function (targetDateKey) {
+          dateSet[targetDateKey] = true;
+        });
+
+        var calendarHtml =
+          '<section class="calendar-section" aria-label="按日历查看打卡详情">' +
+            '<div class="calendar-head">' +
+              '<div>' +
+                '<div class="calendar-title">' + year + '年' + pad(month + 1) + '月</div>' +
+                '<div class="stat-note">点击有颜色的日期查看当天详情。</div>' +
+              '</div>' +
+              '<div class="calendar-nav">' +
+                '<button class="small-button" type="button" id="prevMonth">上个月</button>' +
+                '<button class="small-button" type="button" id="nextMonth">下个月</button>' +
+              '</div>' +
+            '</div>' +
+            '<div class="calendar-grid">';
+
+        calendarHtml += weekdays.map(function (weekday) {
+          return '<div class="calendar-weekday">' + weekday + '</div>';
+        }).join("");
+
+        for (var blank = 0; blank < firstDay; blank += 1) {
+          calendarHtml += '<div class="calendar-empty" aria-hidden="true"></div>';
+        }
+
+        for (var day = 1; day <= daysInMonth; day += 1) {
+          var targetDateKey = year + "-" + pad(month + 1) + "-" + pad(day);
+          var hasRecord = !!dateSet[targetDateKey];
+          var selected = targetDateKey === selectedOverviewDate;
+          var checkedCount = hasRecord ? getCheckedCountByDate(targetDateKey) : 0;
+
+          calendarHtml += '<button class="calendar-day ' +
+            (hasRecord ? "has-record " : "") +
+            (selected ? "selected" : "") +
+            '" type="button" ' +
+            (hasRecord ? 'data-date-key="' + targetDateKey + '"' : 'disabled') +
+            '>' +
+              '<span>' + day + '</span>' +
+              (hasRecord ? '<span class="day-score">' + checkedCount + '/' + items.length + '</span>' : '<span class="day-score">&nbsp;</span>') +
+            '</button>';
+        }
+
+        calendarHtml += '</div>' + renderSelectedDayDetail(selectedOverviewDate) + '</section>';
+        historyList.innerHTML = calendarHtml;
+
+        document.getElementById("prevMonth").addEventListener("click", function () {
+          overviewMonthDate = new Date(year, month - 1, 1);
+          renderCalendar(dates);
+        });
+
+        document.getElementById("nextMonth").addEventListener("click", function () {
+          overviewMonthDate = new Date(year, month + 1, 1);
+          renderCalendar(dates);
+        });
+
+        Array.prototype.slice.call(historyList.querySelectorAll(".calendar-day.has-record")).forEach(function (button) {
+          button.addEventListener("click", function () {
+            selectedOverviewDate = button.dataset.dateKey;
+            overviewMonthDate = parseDateKey(selectedOverviewDate);
+            renderCalendar(dates);
+          });
+        });
+      }
+
+      function renderTrendChart(dates) {
+        var ascendingDates = dates.slice().sort();
+        var values = ascendingDates.map(function (targetDateKey) {
+          return getCheckedCountByDate(targetDateKey);
+        });
+        var maxValue = Math.max(items.length, 1);
+        var width = Math.max(560, ascendingDates.length * 72 + 96);
+        var height = 300;
+        var paddingLeft = 54;
+        var paddingRight = 28;
+        var paddingTop = 34;
+        var paddingBottom = 54;
+        var chartWidth = width - paddingLeft - paddingRight;
+        var chartHeight = height - paddingTop - paddingBottom;
+
+        if (ascendingDates.length === 0) {
+          trendChart.innerHTML =
+            '<div class="trend-head">' +
+              '<div>' +
+                '<div class="trend-title">打卡趋势</div>' +
+                '<div class="stat-note">暂无数据。</div>' +
+              '</div>' +
+            '</div>';
+          return;
+        }
+
+        var points = ascendingDates.map(function (targetDateKey, index) {
+          var x = ascendingDates.length === 1
+            ? paddingLeft + chartWidth / 2
+            : paddingLeft + (chartWidth * index) / (ascendingDates.length - 1);
+          var y = paddingTop + chartHeight - (values[index] / maxValue) * chartHeight;
+          return {
+            date: targetDateKey,
+            value: values[index],
+            x: x,
+            y: y
+          };
+        });
+
+        var linePoints = points.map(function (point) {
+          return point.x.toFixed(1) + "," + point.y.toFixed(1);
+        }).join(" ");
+        var areaPoints = paddingLeft + "," + (paddingTop + chartHeight) + " " +
+          linePoints + " " +
+          (paddingLeft + chartWidth) + "," + (paddingTop + chartHeight);
+        var gridHtml = "";
+
+        for (var tick = 0; tick <= maxValue; tick += 1) {
+          var y = paddingTop + chartHeight - (tick / maxValue) * chartHeight;
+          gridHtml += '<line class="trend-grid-line" x1="' + paddingLeft + '" y1="' + y.toFixed(1) + '" x2="' + (paddingLeft + chartWidth) + '" y2="' + y.toFixed(1) + '"></line>' +
+            '<text class="trend-label" x="' + (paddingLeft - 12) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + tick + '</text>';
+        }
+
+        var labelsHtml = points.map(function (point, index) {
+          var shouldShow = ascendingDates.length <= 8 || index === 0 || index === ascendingDates.length - 1 || index % Math.ceil(ascendingDates.length / 6) === 0;
+          if (!shouldShow) {
+            return "";
+          }
+          return '<text class="trend-label" x="' + point.x.toFixed(1) + '" y="' + (height - 18) + '" text-anchor="middle">' + escapeHtml(point.date.slice(5)) + '</text>';
+        }).join("");
+
+        var pointsHtml = points.map(function (point) {
+          return '<circle class="trend-point" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="6"></circle>' +
+            '<text class="trend-value-label" x="' + point.x.toFixed(1) + '" y="' + (point.y - 12).toFixed(1) + '" text-anchor="middle">' + point.value + '</text>' +
+            '<title>' + escapeHtml(formatDateKey(point.date)) + "：已勾选 " + point.value + " 项" + '</title>';
+        }).join("");
+
+        trendChart.innerHTML =
+          '<div class="trend-head">' +
+            '<div>' +
+              '<div class="trend-title">打卡趋势</div>' +
+              '<div class="stat-note">横轴为日期，纵轴为当天已勾选数量。</div>' +
+            '</div>' +
+            '<div class="history-score">最高 ' + Math.max.apply(null, values) + ' / ' + items.length + ' 项</div>' +
+          '</div>' +
+          '<div class="trend-wrap">' +
+            '<svg class="trend-svg" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="每日打卡数量趋势图">' +
+              gridHtml +
+              '<line class="trend-axis" x1="' + paddingLeft + '" y1="' + (paddingTop + chartHeight) + '" x2="' + (paddingLeft + chartWidth) + '" y2="' + (paddingTop + chartHeight) + '"></line>' +
+              '<line class="trend-axis" x1="' + paddingLeft + '" y1="' + paddingTop + '" x2="' + paddingLeft + '" y2="' + (paddingTop + chartHeight) + '"></line>' +
+              '<polygon class="trend-area" points="' + areaPoints + '"></polygon>' +
+              '<polyline class="trend-line" points="' + linePoints + '"></polyline>' +
+              pointsHtml +
+              labelsHtml +
+            '</svg>' +
+          '</div>';
+      }
+
       function renderOverview() {
         var dates = getHistoryDates();
         historyList.innerHTML = "";
+        overviewStats.innerHTML = "";
+        trendChart.innerHTML = "";
 
         if (dates.length === 0) {
           overviewCount.textContent = "暂无历史记录";
+          overviewStats.innerHTML =
+            '<article class="stat-card highlight">' +
+              '<div class="stat-label">累计打卡天数</div>' +
+              '<div class="stat-value">0 天</div>' +
+              '<div class="stat-note">开始勾选后，这里会自动统计。</div>' +
+            '</article>';
+          trendChart.innerHTML =
+            '<div class="trend-head">' +
+              '<div>' +
+                '<div class="trend-title">打卡趋势</div>' +
+                '<div class="stat-note">暂无数据。</div>' +
+              '</div>' +
+            '</div>';
           historyList.innerHTML = '<div class="empty-state">还没有保存过任何日期的打卡记录。</div>';
           return;
         }
 
         overviewCount.textContent = "共 " + dates.length + " 天记录";
 
-        dates.forEach(function (targetDateKey) {
-          var checkedCount = 0;
-          var itemHtml = items.map(function (item) {
-            var checked = localStorage.getItem(storageKeyByDate(targetDateKey, item.key)) === "true";
-            if (checked) {
-              checkedCount += 1;
-            }
-
-            return '<div class="history-item ' + (checked ? "done" : "") + '">' +
-              '<span>' + escapeHtml(item.label) + '</span>' +
-              '<strong>' + (checked ? "已勾选" : "未勾选") + '</strong>' +
-              '</div>';
-          }).join("");
-
-          var card = document.createElement("article");
-          card.className = "history-card";
-          card.innerHTML =
-            '<div class="history-top">' +
-              '<div class="history-date">' + escapeHtml(formatDateKey(targetDateKey)) + '</div>' +
-              '<div class="history-score">已勾选 ' + checkedCount + ' / ' + items.length + ' 项</div>' +
-            '</div>' +
-            '<div class="history-items">' + itemHtml + '</div>';
-
-          historyList.appendChild(card);
+        var totalCheckedCount = 0;
+        var itemCounts = items.map(function (item) {
+          var count = dates.reduce(function (sum, targetDateKey) {
+            return sum + (localStorage.getItem(storageKeyByDate(targetDateKey, item.key)) === "true" ? 1 : 0);
+          }, 0);
+          totalCheckedCount += count;
+          return {
+            label: item.label,
+            count: count
+          };
         });
+
+        var statsHtml =
+          '<article class="stat-card highlight">' +
+            '<div class="stat-label">累计打卡天数</div>' +
+            '<div class="stat-value">' + dates.length + ' 天</div>' +
+            '<div class="stat-note">包含所有有打卡记录的日期。</div>' +
+          '</article>' +
+          '<article class="stat-card highlight">' +
+            '<div class="stat-label">累计勾选次数</div>' +
+            '<div class="stat-value">' + totalCheckedCount + ' 次</div>' +
+            '<div class="stat-note">所有项目的已勾选次数合计。</div>' +
+          '</article>';
+
+        statsHtml += itemCounts.map(function (item) {
+          var percent = dates.length > 0 ? Math.round((item.count / dates.length) * 100) : 0;
+          return '<article class="stat-card">' +
+            '<div class="stat-label">' + escapeHtml(item.label) + '</div>' +
+            '<div class="stat-value">' + item.count + ' 天</div>' +
+            '<div class="stat-note">占总打卡天数 ' + percent + '%</div>' +
+          '</article>';
+        }).join("");
+
+        overviewStats.innerHTML = statsHtml;
+        renderTrendChart(dates);
+        renderCalendar(dates);
       }
 
       function excelCell(value) {
