@@ -1,4 +1,4 @@
-const CACHE_NAME = "daily-checklist-pwa-v4";
+const CACHE_NAME = "daily-checklist-pwa-v5";
 const APP_FILES = [
   "./",
   "./index.html",
@@ -37,10 +37,31 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
+  if (event.request.mode === "navigate" || event.request.destination === "document") {
+    event.respondWith(
+      fetch(event.request).then(function (networkResponse) {
+        return caches.open(CACHE_NAME).then(function (cache) {
+          cache.put("./index.html", networkResponse.clone());
+          return networkResponse;
+        });
+      }).catch(function () {
+        return caches.match("./index.html");
+      })
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(function (cachedResponse) {
-      return cachedResponse || fetch(event.request).catch(function () {
-        return caches.match("./index.html");
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(event.request).then(function (networkResponse) {
+        return caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
       });
     })
   );

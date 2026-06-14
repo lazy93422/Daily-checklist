@@ -1446,7 +1446,9 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("./sw.js").catch(function () {
+        navigator.serviceWorker.register("./sw.js").then(function (registration) {
+          registration.update();
+        }).catch(function () {
           console.log("Service Worker 注册失败，不影响网页正常使用。");
         });
       });
