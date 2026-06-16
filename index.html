@@ -102,6 +102,29 @@
       font-weight: 600;
     }
 
+    .date-picker-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .date-input {
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: #ffffff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .date-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+    }
+
     button {
       font: inherit;
     }
@@ -693,7 +716,8 @@
       .summary,
       .overview-head,
       .overview-actions,
-      .add-row {
+      .add-row,
+      .date-picker-row {
         align-items: stretch;
         flex-direction: column;
       }
@@ -765,7 +789,10 @@
             日期
             <span id="todayText">加载中...</span>
           </div>
-          <button class="today-button" type="button" id="resetToday">切换到今天</button>
+          <div class="date-picker-row">
+            <input class="date-input" type="date" id="datePicker">
+            <button class="today-button" type="button" id="resetToday">回到今天</button>
+          </div>
         </div>
       </header>
 
@@ -776,7 +803,7 @@
         </nav>
 
         <section class="panel active" id="todayPanel">
-          <p class="hint">点击每个项目即可勾选或取消勾选，勾选状态会自动保存在当前浏览器中。</p>
+          <p class="hint">点击每个项目即可勾选或取消勾选。你可以通过上方日期选择器切换到任意日期进行补打卡。</p>
 
           <section class="items" id="itemsList" aria-label="每日项目"></section>
 
@@ -1392,6 +1419,7 @@
       function loadChecks() {
         dateKey = makeDateKey(date);
         todayText.textContent = formatDate(date);
+        syncDatePicker();
         renderChecklist();
       }
 
@@ -1430,6 +1458,22 @@
         if (event.key === "Enter") {
           addItem();
         }
+      });
+
+      var datePicker = document.getElementById("datePicker");
+
+      function syncDatePicker() {
+        datePicker.value = dateKey;
+      }
+
+      datePicker.addEventListener("change", function () {
+        var picked = datePicker.value;
+        if (!picked) {
+          return;
+        }
+        var parts = picked.split("-").map(Number);
+        date = new Date(parts[0], parts[1] - 1, parts[2]);
+        loadChecks();
       });
 
       document.getElementById("resetToday").addEventListener("click", function () {

@@ -1,4 +1,4 @@
-const CACHE_NAME = "daily-checklist-pwa-v5";
+const CACHE_NAME = "daily-checklist-pwa-v6";
 const APP_FILES = [
   "./",
   "./index.html",
